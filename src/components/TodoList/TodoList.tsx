@@ -19,8 +19,8 @@ const TodoList = ({tasks, title}: any) => {
     useEffect(() => {
         const start = (page-1) * itemsPerPage;
         const end = start + itemsPerPage;
-        setItems(tasks?.slice(start, end));
-        console.log(items);
+        const todos = tasks?.slice(start, end);
+        setItems(todos?.length > 0? todos : tasks?.slice(0, itemsPerPage));    
     }, [page, tasks]);
 
     const onPageClick = (event: any, page: any) => {
