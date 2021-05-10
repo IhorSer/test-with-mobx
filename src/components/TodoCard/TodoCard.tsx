@@ -13,6 +13,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import { useStore } from '../../stores/store';
 import { styles } from './styles';
+import { uuid } from 'uuidv4'; 
 
 export const TodoCard = ({todo, user}: any) => {
     const classes = styles();
@@ -79,8 +80,8 @@ export const TodoCard = ({todo, user}: any) => {
             {todo.description}
           </Typography>
           <Grid container className={classes.chips}>
-          {todo.chips?.map((item: any, i: any) => (
-                <Chip label={item.name} key={i} color='default' variant='outlined' className={classes.chip} />
+          {todo.chips?.map((item: any) => (
+                <Chip label={item.name} key={uuid()} color='default' variant='outlined' className={classes.chip} />
             ))}
             </Grid>
         </CardContent>

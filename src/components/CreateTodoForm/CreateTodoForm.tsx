@@ -14,6 +14,7 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { useStore } from '../../stores/store';
 import { styles } from './styles';
 import { observer } from 'mobx-react';
+import { uuid } from 'uuidv4'; 
 
 const CreateTodoForm = (props: any) => {
     const classes = styles();
@@ -92,8 +93,8 @@ const CreateTodoForm = (props: any) => {
                         variant='outlined'
                         defaultValue={'Hey'}
                         onChange={handleChipChange}>
-                            {chips?.map((item:any, i:any) => {
-                                return (<MenuItem value={item.name} key={i}>{item.name}</MenuItem>)
+                            {chips?.map((item:any) => {
+                                return (<MenuItem value={item.name} key={uuid()}>{item.name}</MenuItem>)
                             })}
                     </Select>
                 </Grid>
@@ -104,8 +105,8 @@ const CreateTodoForm = (props: any) => {
                 </Grid>
             </Grid>
             <Grid container className={classes.chipContainer}>
-                {selectedChips?.map((item, i) => (
-                    <Chip label={item?.name} key={i} className={classes.chip}
+                {selectedChips?.map((item) => (
+                    <Chip label={item?.name} key={uuid()} className={classes.chip}
                         onDelete={handleDelete(item)} color='primary' variant='outlined' />
                 ))}
             </Grid>

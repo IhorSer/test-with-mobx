@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import { useStore } from '../../stores/store';
 import { observer } from 'mobx-react';
 import { styles } from './styles';
+import { uuid } from 'uuidv4'; 
 
 const itemsPerPage = 4;
 
@@ -38,10 +39,10 @@ const TodoList = ({tasks, title}: any) => {
 			</Typography>
             <Grid container className={classes.container}>
                 {
-                    items?.map((item: any, i: any) => {
+                    items?.map((item: any) => {
                         return (
-                            <Box p={2} className={classes.box} key={i}>
-                                <Grid item key={i}
+                            <Box p={2} className={classes.box} key={uuid()}>
+                                <Grid item 
                                     component={TodoCard} todo={item} user={user} />
                             </Box>
                         )
